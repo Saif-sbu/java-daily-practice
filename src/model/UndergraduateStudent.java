@@ -1,6 +1,6 @@
 package model;
 public class UndergraduateStudent extends Student {
-        private String year;
+    private String year;
     public UndergraduateStudent(){
         super();
     }
@@ -11,6 +11,11 @@ public class UndergraduateStudent extends Student {
 
     public String getYear(){
         return year;
+    }
+
+    @Override
+    public String display(){
+        return "ID: " + getId() + " Name: " + getName() + " Score: " + getScore() + " Year: " + getYear();
     }
     
 }

@@ -12,4 +12,9 @@ public class GraduateStudent extends Student {
     public String getResearchArea(){
         return researchArea;
     }
+
+    @Override
+    public String display(){
+        return "ID: " + getId() + " Name: " + getName() + " Score: " + getScore() + " Research Area: " + getResearchArea();
+    }
 }

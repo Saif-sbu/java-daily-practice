@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public abstract class Student {
     private int id;
     private String name;
     private int score;
@@ -25,5 +25,7 @@ public class Student {
     public int getScore(){
         return score;
     }
+
+    public abstract String display();
 }
 

@@ -58,21 +58,18 @@ public class StudentManager {
         }
         return high;
     }
-
-
     public static void main(String[] args){
-        Student s1 = new Student(110, "Saif", 97);
-        UndergraduateStudent s2 = new UndergraduateStudent(111, "Ashley", 95, "Sophomore");
-        GraduateStudent s3 = new GraduateStudent(112, "Lindsay", 99, "Neuroaesthetics");
-        StudentManager m = new StudentManager();
-        m.addStudent(s1);
-        m.addStudent(s2);
-        m.addStudent(s3);
-        System.out.println(m.getStudentReport());
-        System.out.println("Average: " + m.getAverageScore());
-        System.out.println("Highest: " + m.getHighestScore());
-        System.out.println("Ashley's year: " + s2.getYear());
-        System.out.println("Lindsay's research area: " + s3.getResearchArea());
-    }
 
+        Student[] students = {
+            new UndergraduateStudent(113, "Darah", 98, "Freshman"),
+            new UndergraduateStudent(114, "Lily", 95, "Junior"),
+            new UndergraduateStudent(115, "Sophia", 94, "Sophomore"),
+            new GraduateStudent(116, "Rosalie", 92, "Quantum Mechanics"),
+            new GraduateStudent(117, "Isabella", 91, "Phonetics")
+        };
+
+        for (int i = 0; i < 5; i++){
+            System.out.println(students[i].display());
+        }
+    }
 }
