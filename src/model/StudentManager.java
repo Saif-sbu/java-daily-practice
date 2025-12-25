@@ -62,8 +62,8 @@ public class StudentManager {
 
     public static void main(String[] args){
         Student s1 = new Student(110, "Saif", 97);
-        Student s2 = new Student(111, "Ashley", 95);
-        Student s3 = new Student(112, "Lindsay", 99);
+        UndergraduateStudent s2 = new UndergraduateStudent(111, "Ashley", 95, "Sophomore");
+        GraduateStudent s3 = new GraduateStudent(112, "Lindsay", 99, "Neuroaesthetics");
         StudentManager m = new StudentManager();
         m.addStudent(s1);
         m.addStudent(s2);
@@ -71,6 +71,8 @@ public class StudentManager {
         System.out.println(m.getStudentReport());
         System.out.println("Average: " + m.getAverageScore());
         System.out.println("Highest: " + m.getHighestScore());
+        System.out.println("Ashley's year: " + s2.getYear());
+        System.out.println("Lindsay's research area: " + s3.getResearchArea());
     }
 
 }
