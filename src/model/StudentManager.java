@@ -41,6 +41,28 @@ public class StudentManager {
     }
 
     public double getAverageScore(){
+        return avgHelp(size-1);
+    }
+    public double avgHelp(int l){
+        if (l < 0){
+            return 0;
+        }
+        return avgHelp(l-1) + (double) students[l].getScore()/size;
+    }
+
+    public int getHighestScore(){
+        return highScoreHelp(0, students[0].getScore());
+    }
+
+    public int highScoreHelp(int index, int high){
+        if (index == size){
+            return high;
+        }
+        int highest = Math.max(students[index].getScore(), high);
+        return highScoreHelp(index+1, highest);
+    }
+    /* 
+    public double getAverageScore(){
         if (size == 0){
             return 0;
         }
@@ -50,6 +72,7 @@ public class StudentManager {
         }
         return sum / size;
     }
+    
     public int getHighestScore(){
         if (size == 0){
             return 0;
@@ -62,6 +85,7 @@ public class StudentManager {
         }
         return high;
     }
+        */
 
     
 
