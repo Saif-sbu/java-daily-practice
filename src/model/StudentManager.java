@@ -13,6 +13,10 @@ public class StudentManager {
     public StudentManager(){
     }
 
+    public StudentManager(int size){
+        this.size = size;
+    }
+
     public int getSize(){
         return size;
     }
@@ -58,18 +62,7 @@ public class StudentManager {
         }
         return high;
     }
-    public static void main(String[] args){
 
-        Student[] students = {
-            new UndergraduateStudent(113, "Darah", 98, "Freshman"),
-            new UndergraduateStudent(114, "Lily", 95, "Junior"),
-            new UndergraduateStudent(115, "Sophia", 94, "Sophomore"),
-            new GraduateStudent(116, "Rosalie", 92, "Quantum Mechanics"),
-            new GraduateStudent(117, "Isabella", 91, "Phonetics")
-        };
+    
 
-        for (int i = 0; i < 5; i++){
-            System.out.println(students[i].display());
-        }
-    }
 }

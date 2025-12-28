@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Student {
+public abstract class Student implements Reportable {
     private int id;
     private String name;
     private int score;
@@ -26,6 +26,8 @@ public abstract class Student {
         return score;
     }
 
-    public abstract String display();
+    public String toString(){
+        return generateReport();
+    }
 }
 

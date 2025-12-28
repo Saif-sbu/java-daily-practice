@@ -14,7 +14,7 @@ public class GraduateStudent extends Student {
     }
 
     @Override
-    public String display(){
+    public String generateReport(){
         return "ID: " + getId() + " Name: " + getName() + " Score: " + getScore() + " Research Area: " + getResearchArea();
     }
 }

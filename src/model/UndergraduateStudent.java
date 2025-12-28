@@ -12,9 +12,8 @@ public class UndergraduateStudent extends Student {
     public String getYear(){
         return year;
     }
-
     @Override
-    public String display(){
+    public String generateReport(){
         return "ID: " + getId() + " Name: " + getName() + " Score: " + getScore() + " Year: " + getYear();
     }
     
