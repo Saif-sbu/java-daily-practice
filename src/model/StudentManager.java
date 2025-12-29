@@ -1,35 +1,36 @@
 package model;
 import java.util.Arrays;
+import exceptions.InvalidScoreException;
+import exceptions.EmptyStudentListException;
 public class StudentManager {
     private Student[] students = new Student[10];
     private int size = 0;
-    
-    private void resize(){
-        if (size == students.length){
-            students = Arrays.copyOf(students, students.length*2);
-        }
-    }
 
     public StudentManager(){
     }
 
-    public StudentManager(int size){
-        this.size = size;
+     private void resize(){
+        if (size == students.length){
+            students = Arrays.copyOf(students, students.length*2);
+        }
     }
-
+    
     public int getSize(){
         return size;
     }
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) throws InvalidScoreException {
+        if (student.getScore() < 0 || student.getScore() > 100){
+            throw new InvalidScoreException("Score must be between 0 and 100.");
+        }
         resize();
         students[size] = student;
         size++;
     }
 
-    public String getStudentReport(){
+    public String getStudentReport() throws EmptyStudentListException{
         if (size == 0){
-            return "No students";
+            throw new EmptyStudentListException("Students were not added.");
         }
         String report = "";
         for (int i = 0; i < size; i++){
@@ -40,7 +41,10 @@ public class StudentManager {
         return report;
     }
 
-    public double getAverageScore(){
+    public double getAverageScore() throws EmptyStudentListException{
+        if (size == 0){
+            throw new EmptyStudentListException("Students were not added.");
+        }
         return avgHelp(size-1);
     }
     public double avgHelp(int l){
@@ -50,7 +54,10 @@ public class StudentManager {
         return avgHelp(l-1) + (double) students[l].getScore()/size;
     }
 
-    public int getHighestScore(){
+    public int getHighestScore() throws EmptyStudentListException{
+        if (size == 0){
+            throw new EmptyStudentListException("Students were not added.");
+        }
         return highScoreHelp(0, students[0].getScore());
     }
 

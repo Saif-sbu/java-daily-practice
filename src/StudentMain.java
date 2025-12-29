@@ -1,5 +1,7 @@
 import java.util.Scanner;
+import exceptions.InvalidScoreException;
 import model.*;
+import exceptions.EmptyStudentListException;
 public class StudentMain {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
@@ -18,8 +20,12 @@ public class StudentMain {
                 System.out.print("year: ");
                 String year = input.next();
                 Student student = new UndergraduateStudent(id, name, score, year);
-                students.addStudent(student);
-
+                try {
+                    students.addStudent(student);
+                    System.out.println("Student added");
+                } catch (InvalidScoreException e){
+                    System.out.println(e.getMessage());
+                }
             } else if (choose == 2) {
                 System.out.print("ID: ");
                 int id = input.nextInt();
@@ -30,14 +36,31 @@ public class StudentMain {
                 System.out.print("Research Area: ");
                 String area = input.next();
                 Student student = new GraduateStudent(id, name, score, area);
-                students.addStudent(student);
-
+                try {
+                    students.addStudent(student);
+                    System.out.println("Student added");
+                } catch (InvalidScoreException e){
+                    System.out.println(e.getMessage());
+                }
             } else if (choose == 3){
-                System.out.println(students.getStudentReport());
+                try {
+                    System.out.println(students.getStudentReport());
+                    System.out.println("Report viewed");
+                } catch (EmptyStudentListException e){
+                    System.out.println(e.getMessage());
+                }
             } else if (choose == 4){
-                System.out.println(students.getAverageScore());
+                try {
+                    System.out.println(students.getAverageScore());
+                } catch (EmptyStudentListException e){
+                    System.out.println(e.getMessage());
+                }
             } else if (choose == 5){
-                System.out.println(students.getHighestScore());
+                try {
+                    System.out.println(students.getHighestScore());   
+                } catch (EmptyStudentListException e){
+                    System.out.println(e.getMessage());
+                }
             } else if (choose == 6){
                 System.out.println("Exiting.");
                 break;
@@ -47,6 +70,4 @@ public class StudentMain {
         } while (choose != 6);
         input.close();
     }
-
-
 }

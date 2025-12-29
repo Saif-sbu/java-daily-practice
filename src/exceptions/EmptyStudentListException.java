@@ -1,5 +1,6 @@
 package exceptions;
-
-public class EmptyStudentListException {
-    
+public class EmptyStudentListException extends Exception{
+    public EmptyStudentListException(String message){
+        super(message);
+    }
 }
