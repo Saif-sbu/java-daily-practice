@@ -3,19 +3,28 @@ import model.Storage;
 public class Main {
     public static void main(String[] args){ 
         Scanner input = new Scanner(System.in);
-        int choice;
+        int choice = 0;
         Storage storage = new Storage();
        do{
         System.out.println("======= MENU =======");
         System.out.print("1. Add item\n2. View items\n3. Simple calculation\n4. Exit");
-        System.out.print("\n=====================");
-        System.out.print("\nEnter choice: (Only a number)");
+        System.out.print("\n=====================\nEnter choice: (Only a number)");
+        if (!input.hasNextInt()){
+            System.out.println("Invalid input. Please enter a number.");
+            input.next();
+            continue;
+        }
         choice = input.nextInt();
         switch(choice){
             case 1:
                 System.out.println("Adding item:");
                 System.out.println("Enter only integers (-1 to stop):");
                 while (true){
+                    if (!input.hasNextInt()){
+                        System.out.println("Invalid input. Please enter an integer.");
+                        input.next();
+                        continue;
+                    }
                     int v = input.nextInt();
                     if (v == -1){
                         break;
@@ -32,11 +41,10 @@ public class Main {
             case 3:
                 System.out.println("Calculating:");
                 System.out.println(storage.simpleCalc());
-                System.out.println("Calculated");
+                System.out.println("Calculation complete.");
                 break;
             case 4:
-                System.out.println("Exiting...");
-                System.out.println(exit());
+                System.out.println("Exiting..." + exit());
                 break;
             default:
                 System.out.println("Invalid input. Please try again.");
